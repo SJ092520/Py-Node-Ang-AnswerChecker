@@ -11,12 +11,12 @@ import { hasAdminAccess } from '../utils/auth.utils';
 export class AuthGuardService implements CanActivate, CanActivateChild {
 
   constructor(private route: Router) { }
-  canActivate(): Boolean {
+  canActivate(): boolean {
     if (localStorage.getItem("TOKEN") === null) return true;
     this.route.navigate(['/home']);
     return false;
   }
-  canActivateChild(): Boolean {
+  canActivateChild(): boolean {
     if (localStorage.getItem("TOKEN") !== null) return true;
     this.route.navigate(['/auth/login']);
     return false;
