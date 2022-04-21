@@ -14,6 +14,10 @@ userModel.getUserById = userId => {
         .then(model => model.findOne({userId}))
         .then(response =>  response);
 }
-
+userModel.editUser=(userDetails,userId)=>{
+    return collection.getCollection(COLLECTION_NAME.USERS)
+        .then(model => model.findOneAndUpdate( {userId}, {$set:{...userDetails}}, {new:true}) )
+        .then(response =>  response);
+}
 
 module.exports = userModel;

@@ -31,5 +31,24 @@ userService.loginUser = async loginDetails  => {
         throw new ApiError("Invalid username or password", statusCd);
     }
 }
+userService.createUser = userDetails => {
+    return userModel.getUserById(userDetails.userId)
+        .then(response => {
+            if(response) throw new ApiError("UserId already exist",400);
+             return true;
+        })
+        .then( canCreate => {
+            if(canCreate){
+                return userModel.createUser(userDetails)
+                .then(response => ({message: `User #${response.userId} created successfully`}) )
+            }
+        })
+} 
+userService.editUser = (userDetails,userId) => {
+        return userModel.editUser(userDetails,userId)
+        .then(response => ({message: `User #${response.userId} Edited successfully`}) )
+            
+        
+} 
 
 module.exports = userService;
