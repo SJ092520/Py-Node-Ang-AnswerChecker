@@ -1,31 +1,35 @@
-import {HttpHeaders} from '@angular/common/http';
-
-export const getHeader = ():any=>{
+import { HttpHeaders } from '@angular/common/http';
+import { CONSTANTS } from "../keys/constants";
+export const getHeader = (): any => {
     let headers = new HttpHeaders({
-        'content-type':'application/json',
+        'content-type': 'application/json',
         'Authorization': "Bearer " + localStorage.getItem('TOKEN')
     })
-    return {headers};
+    return { headers };
 }
 
-export const getHeaderForUpload = ():any =>{
+export const getHeaderForUpload = (): any => {
     let headers = new HttpHeaders({
         'Authorization': "Bearer " + localStorage.getItem('TOKEN')
     })
-    return {headers};
+    return { headers };
 }
 
-export const getHeaderForDownload = ():any =>{
+export const getHeaderForDownload = (): any => {
     let headers = new HttpHeaders({
-        'content-type':'application/json',
+        'content-type': 'application/json',
         'Authorization': "Bearer " + localStorage.getItem('TOKEN'),
     })
-    return {'responseType':"blob",headers};
+    return { 'responseType': "blob", headers };
 }
-export const getHeaderForgotpass = (userId:any)=>{
+export const getHeaderForgotpass = (userId: any) => {
     let headers = new HttpHeaders({
-        'content-type':'application/json',
+        'content-type': 'application/json',
         'Authorization': "Bearer " + userId
     })
-    return {headers};
+    return { headers };
 }
+
+export const hasAdminAccess = (userType: String): boolean => {
+    return CONSTANTS.ROLE_WITH_ADMIN_ACCESS.includes(userType);
+};
