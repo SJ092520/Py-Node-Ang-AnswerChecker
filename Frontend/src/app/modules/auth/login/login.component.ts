@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder
   ) { }
   
+  errorMessage:any;
   loginForm = new FormGroup({
     userId: new FormControl('',[Validators.required]),
     userPassword: new FormControl('',[Validators.required])

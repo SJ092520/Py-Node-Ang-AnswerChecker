@@ -30,6 +30,6 @@ export const getHeaderForgotpass = (userId: any) => {
     return { headers };
 }
 
-export const hasAdminAccess = (userType: String): boolean => {
+export const hasAdminAccess = (userType: string): boolean => {
     return CONSTANTS.ROLE_WITH_ADMIN_ACCESS.includes(userType);
 };
