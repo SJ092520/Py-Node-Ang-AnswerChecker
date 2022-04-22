@@ -27,8 +27,9 @@ export class LoginComponent implements OnInit {
 
   authenticateUser() {
     this.service.loginUser(this.loginForm.value).subscribe(res=>{
-      localStorage.setItem("TOKEN",res.TOKEN);
-      this.globalStore.setGlobalStore({userId:res.userId,name:res.userName,role:res.role});
+      console.log(res)
+      // localStorage.setItem("TOKEN",res.TOKEN);
+      // this.globalStore.setGlobalStore({userId:res.userId,name:res.userName,role:res.role,deptId:res.deptId});
     });
   }
 
