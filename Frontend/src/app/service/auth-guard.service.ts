@@ -29,8 +29,8 @@ export class AuthGuardService implements CanActivate, CanActivateChild {
 export class AdminGuardService implements CanActivate {
   constructor(private route: Router, private globalStore: GlobalStoreService) { }
   canActivate(): boolean {
-    const { userType } = this.globalStore.getGlobalStore();
-    if (hasAdminAccess(userType)) return true;
+    const { role } = this.globalStore.getGlobalStore();
+    if (hasAdminAccess(role)) return true;
     this.route.navigate(['/home']);
     return false;
   }
