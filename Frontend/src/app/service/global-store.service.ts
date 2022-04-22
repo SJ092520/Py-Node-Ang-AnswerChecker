@@ -8,14 +8,14 @@ export class GlobalStoreService {
   constructor() { }
   getGlobalStore() {
     return {
-      userId: localStorage.getItem('USERID'),
+      userId: localStorage.getItem('ID'),
       userName: localStorage.getItem('USERNAME'),
       role: localStorage.getItem('ROLE'),
       deptId: localStorage.getItem('DEPTID'),
     }
   }
   setGlobalStore(globalData: any) {
-    localStorage.setItem('USERID', globalData.id);
+    localStorage.setItem('ID', globalData.id);
     localStorage.setItem('NAME', globalData.name);
     localStorage.setItem('ROLE', globalData.role);
     localStorage.setItem('DEPTID', globalData.deptId);
