@@ -10,13 +10,15 @@ export class GlobalStoreService {
     return {
       userId: localStorage.getItem('USERID'),
       userName: localStorage.getItem('USERNAME'),
-      userType: localStorage.getItem('USERTYPE')
+      role: localStorage.getItem('ROLE'),
+      deptId: localStorage.getItem('DEPTID'),
     }
   }
-  setGlobalStore(globalData: any) {
-    localStorage.setItem('USERID', globalData.userId);
-    localStorage.setItem('USERNAME', globalData.userName);
-    localStorage.setItem('USERTYPE', globalData.userType);
+  setGlobalStoreStudent(globalData: any) {
+    localStorage.setItem('ID', globalData.userId);
+    localStorage.setItem('NAME', globalData.userName);
+    localStorage.setItem('ROLE', globalData.role);
+    localStorage.setItem('DEPTID', globalData.deptId);
   }
   clearGlobalStore() {
     localStorage.clear();
