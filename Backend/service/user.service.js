@@ -15,26 +15,22 @@ userService.loginUser = async loginDetails  => {
         const userData = await userModel.getUserById(loginDetails.userId);
         if(!userData) throw 401;
         else{
-            console.log(userData)
-            console.log(loginDetails)
             const isNotMatch = loginDetails.password.localeCompare(userData.password);
             if (isNotMatch)  throw 401; 
             else {
-                let user ={}
-                if(userData.userType == USER_TYPE.MANAGEMENT){
-                    const managementData = await managementModel.getManagementById(userData.userId)
-                    user = managementData
-                }
-                else{
-                    const studentDetails = await studentModel.getStudentById(userData.userId);
-                    user = studentDetails
-                }
-                
                 const message = `Hi ${userData.userId}`;
                 const payload = { userId: userData.userId, userType: userData.userType };
                 const token = jwt.sign(payload, JWT_KEY.SECRET);
-                
-                return { message, token, user };
+                if(userData.userType == USER_TYPE.MANAGEMENT){
+                    return managementModel.getManagementById(userData.userId).then(response =>{
+                        return {message,payload,token,userData:response}
+                    });
+                }
+                else{
+                    return studentModel.getStudentById(userData.userId).then(response => {
+                        return {message,payload,token,userData:response}
+                    });
+                }
             }
         }
     }

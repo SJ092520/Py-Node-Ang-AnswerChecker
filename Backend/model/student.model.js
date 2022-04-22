@@ -9,10 +9,9 @@ studentModel.create = (userDetails) => {
         .then(response => response);
 }
 studentModel.getStudentById = registerNo => {
-    console.log("inside model",registerNo)
     return collection.getCollection(COLLECTION_NAME.STUDENT)
         .then(model => model.findOne({"registerNo": registerNo }))
-        .then(response => response);
+        .then(response => {console.log(response); return response});
 }
 
 module.exports = studentModel;
