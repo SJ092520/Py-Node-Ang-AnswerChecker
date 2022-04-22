@@ -1,8 +1,10 @@
 const jwt = require('jsonwebtoken');
 
 const userModel = require("../model/user.model");
-const { JWT_KEY } = require("../keys/constants");
+const { JWT_KEY, USER_TYPE } = require("../keys/constants");
 const { ApiError } = require('../objectCreator/objectCreator');
+const studentModel = require('../model/student.model');
+const managementModel = require('../model/management.model');
 
 
 const userService ={};
@@ -18,13 +20,20 @@ userService.loginUser = async loginDetails  => {
             const isNotMatch = loginDetails.password.localeCompare(userData.password);
             if (isNotMatch)  throw 401; 
             else {
+                let user ={}
+                if(userData.userType == USER_TYPE.MANAGEMENT){
+                    const managementData = await managementModel.getManagementById(userData.userId)
+                    user = managementData
+                }
+                else{
+                    const studentDetails = await studentModel.getStudentById(userData.userId);
+                    user = studentDetails
+                }
+                
                 const message = `Hi ${userData.userId}`;
                 const payload = { userId: userData.userId, userType: userData.userType };
                 const token = jwt.sign(payload, JWT_KEY.SECRET);
-                const user = {
-                    userId: userData.userId,
-                    userType: userData.userType
-                }
+                
                 return { message, token, user };
             }
         }
