@@ -13,10 +13,12 @@ userService.loginUser = async loginDetails  => {
         const userData = await userModel.getUserById(loginDetails.userId);
         if(!userData) throw 401;
         else{
+            console.log(userData)
+            console.log(loginDetails)
             const isNotMatch = loginDetails.password.localeCompare(userData.password);
             if (isNotMatch)  throw 401; 
             else {
-                const message = `Hi ${userData.userName}`;
+                const message = `Hi ${userData.userId}`;
                 const payload = { userId: userData.userId, userType: userData.userType };
                 const token = jwt.sign(payload, JWT_KEY.SECRET);
                 const user = {
