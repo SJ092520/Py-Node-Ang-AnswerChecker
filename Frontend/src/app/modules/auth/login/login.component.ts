@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormBuilder,FormGroup, FormControl, Validators} from '@angular/forms';
 import { ApiClientService } from 'src/app/service/api-client.service';
 import { GlobalStoreService } from 'src/app/service/global-store.service';
+import {CONSTANTS} from '../../../keys/constants'
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -30,6 +31,13 @@ export class LoginComponent implements OnInit {
       console.log(res)
       localStorage.setItem("TOKEN",res.token);
       this.globalStore.setGlobalStore({id:res.userData.id,name:res.userData.name,role:res.userData.role,deptId:res.userData.deptId});
+
+      if(CONSTANTS.ROLE_WITH_ADMIN_ACCESS.includes(res.userData.role)){
+        this.router.navigate(['/management/dashboard']);
+      }
+      else{
+        this.router.navigate(['/student/dashboard']);
+      }
     });
   }
 

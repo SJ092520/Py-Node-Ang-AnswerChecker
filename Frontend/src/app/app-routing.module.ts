@@ -9,21 +9,32 @@ const routes: Routes = [
     redirectTo: '/auth/login',
     pathMatch: 'full',
   },
+
+  {
+    path: '',
+    component: ContentLayoutComponent,
+    canActivateChild: [AuthGuardService],
+    children: [
+      {
+        path: 'management',
+        canActivate: [AdminGuardService],
+        loadChildren: () =>
+          import('./modules/management/management.module').then(m => m.ManagementModule)
+      },
+      {
+        path: 'student',
+        loadChildren: () =>
+          import('./modules/student/student.module').then(m => m.StudentModule)
+      },
+
+    ]
+  },
   {
     path: 'auth',
     component: ContentLayoutComponent,
     canActivate: [AuthGuardService],
     loadChildren: () =>
       import('./modules/auth/auth.module').then(m => m.AuthModule)
-  },
-  {
-    path: '',
-    component: ContentLayoutComponent,
-    // canActivateChild: [AuthGuardService],
-    children: [
-
-
-    ]
   },
   { path: '**', redirectTo: '/auth/login', pathMatch: 'full' }
 ];

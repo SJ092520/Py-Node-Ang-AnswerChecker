@@ -13,7 +13,7 @@ export class AuthGuardService implements CanActivate, CanActivateChild {
   constructor(private route: Router) { }
   canActivate(): boolean {
     if (localStorage.getItem("TOKEN") === null) return true;
-    this.route.navigate(['/home']);
+    this.route.navigate(['/auth/login']);
     return false;
   }
   canActivateChild(): boolean {
