@@ -19,9 +19,9 @@ userService.loginUser = async loginDetails  => {
             if (isNotMatch)  throw 401; 
             else {
                 const message = `Hi ${userData.userId}`;
-                const payload = { userId: userData.userId, userType: userData.userType };
+                const payload = { userId: userData.userId, role: userData.role };
                 const token = jwt.sign(payload, JWT_KEY.SECRET);
-                if(userData.userType == USER_TYPE.MANAGEMENT){
+                if(userData.role == USER_TYPE.MANAGEMENT){
                     return managementModel.getManagementById(userData.userId).then(response =>{
                         return {message,payload,token,userData:response}
                     });
