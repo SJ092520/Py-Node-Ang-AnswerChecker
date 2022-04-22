@@ -28,8 +28,8 @@ export class LoginComponent implements OnInit {
   authenticateUser() {
     this.service.loginUser(this.loginForm.value).subscribe(res=>{
       console.log(res)
-      // localStorage.setItem("TOKEN",res.TOKEN);
-      // this.globalStore.setGlobalStore({userId:res.userId,name:res.userName,role:res.role,deptId:res.deptId});
+      localStorage.setItem("TOKEN",res.token);
+      this.globalStore.setGlobalStore({id:res.userData.id,name:res.userData.name,role:res.userData.role,deptId:res.userData.deptId});
     });
   }
 

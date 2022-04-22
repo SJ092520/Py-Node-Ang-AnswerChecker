@@ -8,9 +8,9 @@ studentModel.create = (userDetails) => {
         .then(model => model.create(userDetails))
         .then(response => response);
 }
-studentModel.getStudentById = registerNo => {
+studentModel.getStudentById = id => {
     return collection.getCollection(COLLECTION_NAME.STUDENT)
-        .then(model => model.findOne({"registerNo": registerNo }))
+        .then(model => model.findOne({"id": id }))
         .then(response => {console.log(response); return response});
 }
 

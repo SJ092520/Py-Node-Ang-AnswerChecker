@@ -15,8 +15,8 @@ export class GlobalStoreService {
     }
   }
   setGlobalStore(globalData: any) {
-    localStorage.setItem('ID', globalData.userId);
-    localStorage.setItem('NAME', globalData.userName);
+    localStorage.setItem('USERID', globalData.id);
+    localStorage.setItem('NAME', globalData.name);
     localStorage.setItem('ROLE', globalData.role);
     localStorage.setItem('DEPTID', globalData.deptId);
   }

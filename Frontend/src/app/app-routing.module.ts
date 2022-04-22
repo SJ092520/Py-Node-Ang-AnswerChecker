@@ -19,7 +19,7 @@ const routes: Routes = [
   {
     path: '',
     component: ContentLayoutComponent,
-    canActivateChild: [AuthGuardService],
+    // canActivateChild: [AuthGuardService],
     children: [
 
 

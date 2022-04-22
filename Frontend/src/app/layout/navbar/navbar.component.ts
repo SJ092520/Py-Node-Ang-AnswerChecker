@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GlobalStoreService } from 'src/app/service/global-store.service';
 
 @Component({
   selector: 'app-navbar',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private globalStore: GlobalStoreService) { }
 
   ngOnInit(): void {
+    
+  }
+
+  logout(){
+    this.globalStore.clearGlobalStore();
   }
 
 }
