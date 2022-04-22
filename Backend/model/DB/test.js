@@ -2,6 +2,10 @@ const studentSchema = require('../schemas/student');
 console.log(studentSchema);
 
 const userModel = require("../user.model");
+const managementModel = require("../management.model");
+const studentModel = require("../student.model");
 
-userModel.createUser({"userId":"1518102126","password":"1234","userType":2});
+// userModel.create({"userId":"1518102126","password":"1234","userType":2});
+managementModel.create({id:"1518MOH",name:"Mohanraj",deptId:"CSE",designation:"Assistant Professor",mail:"mohan@",phone:"1234567890"});
+studentModel.create({registerNo:"1518102126",name:"senthil",deptId:"CSE",mail:"mohan@",phone:"1234567890"});
 console.log("created")
