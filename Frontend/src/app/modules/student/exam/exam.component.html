@@ -1,1 +1,22 @@
-<p>exam works!</p>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <form [formGroup]="examForm" (ngSubmit)="endTest()">
+                    <div class="form-group col-md-8">
+                        <label>No. of pages used<span class="required">*</span> </label>
+                        <input type="text" class="form-control" placeholder="Number of pages used"
+                            formControlName="pages" />
+                    </div>
+                    <div class="form-group col-md-8">
+                        <label>No. of pages used<span class="required">*</span> </label>
+                        <input type="file" class="form-control" (change)="selectFile($event)" />
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block btn-lg mt-5">
+                        Submit
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
