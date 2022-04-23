@@ -44,4 +44,10 @@ export class ApiClientService {
     return this.http.get<any>(`${this.host}/student/profile/${userId}`, getHeader())
       .pipe(catchError(err => this.throwError(err)));
   }
+  uploadAnswerSheet(formData: any, studentId: string, courseYearSem: String): Observable<any> {
+    return this.http.put<any>(`${this.host}/student/answer-sheet-upload/${courseYearSem}/${studentId}`, formData, getHeaderForUpload())
+      .pipe(catchError(err => this.throwError(err)));
+  }
+
+  ///answer-sheet-upload/:courseYearSem/:studentId
 }
