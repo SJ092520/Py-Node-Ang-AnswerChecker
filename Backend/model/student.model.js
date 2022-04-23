@@ -10,8 +10,12 @@ studentModel.create = (userDetails) => {
 }
 studentModel.getStudentById = id => {
     return collection.getCollection(COLLECTION_NAME.STUDENT)
-        .then(model => model.findOne({"id": id }))
-        .then(response => {console.log(response); return response});
+        .then(model => model.findOne({ "id": id }))
+        .then(response => { console.log(response); return response });
 }
-
+studentModel.addAnswerSheet = (studentId, semester, course, filledApplication) => {
+    return collection.getCollection(COLLECTION_NAME.PUBLICATIONS)
+        .then(model => model.findOneAndUpdate({ studentId }, { $set: { 'file.filledApplication': filledApplication } }, { new: true }))
+        .then(response => response);
+}
 module.exports = studentModel;
