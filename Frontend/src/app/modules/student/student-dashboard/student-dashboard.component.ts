@@ -10,6 +10,7 @@ export class StudentDashboardComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    localStorage.setItem('EXAMON', 'false');
   }
 
 }
