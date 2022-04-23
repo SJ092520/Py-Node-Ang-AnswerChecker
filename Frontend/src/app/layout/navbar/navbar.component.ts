@@ -9,12 +9,12 @@ import { GlobalStoreService } from 'src/app/service/global-store.service';
 export class NavbarComponent implements OnInit {
 
   constructor(private globalStore: GlobalStoreService) { }
-
+  localStorage: any;
   ngOnInit(): void {
-    
+    this.localStorage = localStorage;
   }
 
-  logout(){
+  logout() {
     this.globalStore.clearGlobalStore();
   }
 
