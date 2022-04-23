@@ -16,7 +16,7 @@ export class ApiClientService {
   }
   throwError(err: any): string {
     let message: string = err.error.errorMessage;
-    throw message || "Please f-try later";
+    throw message || "Please try later";
   }
   //USER
   getAllUser(): Observable<any> {

@@ -33,10 +33,11 @@ export class LoginComponent implements OnInit {
       this.globalStore.setGlobalStore({id:res.userData.id,name:res.userData.name,role:res.userData.role,deptId:res.userData.deptId});
 
       if(CONSTANTS.ROLE_WITH_ADMIN_ACCESS.includes(res.userData.role)){
-        this.router.navigate(['/management/dashboard']);
+        this.router.navigate(['/management']);
       }
       else{
-        this.router.navigate(['/student/dashboard']);
+        
+        this.router.navigate(['/student']);
       }
     });
   }

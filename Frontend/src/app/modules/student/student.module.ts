@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { StudentRoutingModule } from './student-routing.module';
 import { StudentDashboardComponent } from './student-dashboard/student-dashboard.component';
+import { ExamComponent } from './exam/exam.component';
 
 
 
@@ -10,7 +11,8 @@ import { StudentDashboardComponent } from './student-dashboard/student-dashboard
   declarations: [
     
   
-    StudentDashboardComponent
+    StudentDashboardComponent,
+            ExamComponent
   ],
   imports: [
     CommonModule,
