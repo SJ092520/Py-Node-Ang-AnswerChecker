@@ -12,12 +12,17 @@ export class AuthGuardService implements CanActivate, CanActivateChild {
 
   constructor(private route: Router) { }
   canActivate(): boolean {
-    if (localStorage.getItem("TOKEN") === null) return true;
-    this.route.navigate(['/auth/login']);
+    if (localStorage.getItem("TOKEN") == null) return true;
+    if(hasAdminAccess(localStorage.getItem("ROLE"))){
+      this.route.navigate(['/management']);
+    }
+    else{
+      this.route.navigate(['/student']);
+    }
     return false;
   }
   canActivateChild(): boolean {
-    if (localStorage.getItem("TOKEN") !== null) return true;
+    if (localStorage.getItem("TOKEN") != null) return true;
     this.route.navigate(['/auth/login']);
     return false;
   }
