@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 
 import { UserRoutingModule } from './user-routing.module';
 import { HomeComponent } from './home/home.component';
+import { AnswerKeyFormComponent } from './answer-key-form/answer-key-form.component';
 
 
 @NgModule({
   declarations: [
-    HomeComponent
+    HomeComponent,
+    AnswerKeyFormComponent
   ],
   imports: [
     CommonModule,
