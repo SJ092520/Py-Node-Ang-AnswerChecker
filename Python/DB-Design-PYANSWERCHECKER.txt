@@ -1,0 +1,91 @@
+(Student)
+Register no
+Name
+DepartmentId
+Semester[
+	Course[
+		Year+Sem,Id(Course),Elective,Mark{
+			Internal,External
+		},
+		[
+    			{
+			        "AnswerSheet":{
+			            "Question Number":[
+			                "Answer","Mark"
+			            ]
+			        }
+			    }
+		]
+	]
+]
+Mail
+Phone
+
+(Course)
+Dept
+Id
+Name
+Credits
+Desc
+"AnswerKey":[{
+
+            "YearSemId":"2022-7",
+	        "QP":"///Path///",
+            "AK":[{
+                "QuestionNo1":"Senthilfucker",
+                "AnswerType":"Diagram/Descriptive",
+                "CheckFactor":"Fuzzy/Cosine/Graph",
+                "MaxMark":"16",
+                "Suggestion":"True/False"
+            }]
+        }]
+
+(Department)
+Id
+Name
+
+(Management)
+Id
+Name
+Department
+Designation
+Role
+Mail
+Phone
+
+(User)
+Id
+Password
+UserType
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ret tel lit till rile lire leir lier liter 
+ret tel lit till rile lire leir lier liter
+yuies suie sie ieus uies yie iuy euy isue ueis ueiy
+yuies suie sie ieus uies yie iuy euy isue ueis ueiy
+
+
